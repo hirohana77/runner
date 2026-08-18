@@ -33,12 +33,16 @@ jobs:
       - name: Build Web Game
         run: npm run build
 
-      - name: Setup Android Assets
+      - name: Setup Android Project & Assets
         run: |
+          echo "sdk.dir=/usr/local/lib/android/sdk" > android/local.properties
           mkdir -p android/app/src/main/assets/public
           cp -r dist/* android/app/src/main/assets/public/
 
       - name: Build Debug APK
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
+          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
         run: |
           cd android
           sed -i 's/\r$//' gradlew
