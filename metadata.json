@@ -1,0 +1,6 @@
+{
+  "name": "Infinite Shift 3D - 多维动作跑酷",
+  "description": "3D动作跑酷手游，支持跳跃、滑行、侧闪与空中二段跳，包含随机主题关卡（赛博都市/霓虹神社/深空基地/地底隧道等）、技能与滑板系统、角色与升级系统。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
