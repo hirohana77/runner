@@ -2,7 +2,7 @@ package com.infiniteshift.runner;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.os.Build;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -23,7 +23,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Hardware acceleration & full screen
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -37,7 +36,6 @@ public class MainActivity extends Activity {
         setupWebView();
         hideSystemUI();
 
-        // Load game from local assets via secure https proxy
         webView.loadUrl("https://appassets.androidplatform.net/assets/public/index.html");
     }
 
@@ -69,7 +67,7 @@ public class MainActivity extends Activity {
             @SuppressWarnings("deprecation")
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-                return assetLoader.shouldInterceptRequest(android.net.Uri.parse(url));
+                return assetLoader.shouldInterceptRequest(Uri.parse(url));
             }
         });
 
@@ -83,8 +81,6 @@ public class MainActivity extends Activity {
             | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
             | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-            | View.SYSTEM_UI_FLAG_FULLSCREEN
         );
     }
 
